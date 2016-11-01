@@ -5,6 +5,8 @@
 %token ASSIGN NEG LT GT LTE GTE EQ NEQ
 %token AND OR
 
+%token CHAR INT BOOL FLOAT
+
 
 
 

@@ -3,13 +3,14 @@
 rule token = parse
   [' ' '\t' '\r' '\n'] { token lexbuf } (* Whitespace *)
 | "/*"  { comment lexbuf } (* Comment *)
-| '(' { LPAREN }
+| '(' { LPAREN } (* punctuation *)
 | ')' { RPAREN }
 | '{' { LBRACE }
 | '}' { RBRACE }
 | ';' { SEMI }
 | ',' { COMMA }
-| '+' { ADDITION }
+
+| '+' { ADDITION } (* operators *)
 | '-' { SUBTRACTION }
 | '*' { MULTIPLICATION }
 | '/' { DIVISION }
@@ -24,4 +25,11 @@ rule token = parse
 | "!=" { NEQ }
 | "&&" { AND }
 | "||" { OR }
+
+| "char" { CHAR } (* types *)
+| "int" { INT }
+| "bool" { BOOL }
+| "float" { FLOAT }
+| "true" { TRUE }
+| "false" { FALSE }
 | eof { EOF }
