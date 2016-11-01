@@ -7,12 +7,16 @@
 
 %token CHAR INT BOOL FLOAT
 
-
-
-
+%token <int> LITERAL
 
 %token EOF
 
-
+%start program
+%type <Ast.program> program
 
 %%
+
+program: EOF { }
+
+expr:
+  LITERAL { Lit($1) }

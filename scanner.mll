@@ -32,4 +32,10 @@ rule token = parse
 | "float" { FLOAT }
 | "true" { TRUE }
 | "false" { FALSE }
+
+| ['0'-'9']+ as lit { LITERAL(int_of_string lit) }
 | eof { EOF }
+
+and comment = parse
+  "*/" { token lexbuf }
+| _    { comment lexbuf }
